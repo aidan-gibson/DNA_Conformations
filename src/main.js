@@ -11,10 +11,10 @@ import { Color, Scene, WebGLRenderer, PerspectiveCamera, DirectionalLight, Hemis
 let scene
 let loop
 let loader
-let A_DNA = null
-let B_DNA = null
-let Z_DNA = null
-let G_DNA = null
+let A_DNA_Data = null
+let B_DNA_Data = null
+let Z_DNA_Data = null
+let G_DNA_Data = null
 
 
 
@@ -51,96 +51,123 @@ function initializeWorld(container) {
 	scene.add(ambientLight, mainLight)
 
 	new Resizer(container, camera, renderer)
+
+
+
 }
 
-// loadDNA function
-async function init(dnaType) {
-	switch (dnaType) {
-	case 'A':
-		if (B_DNA) {
-			console.log('Removing B_DNA:', B_DNA)
-			scene.remove(B_DNA)
-		}
-		if (Z_DNA) {
-			console.log('Removing Z_DNA:', Z_DNA)
-			scene.remove(Z_DNA)
-		}
-		if (G_DNA) {
-			console.log('Removing G_DNA:', G_DNA)
-			scene.remove(G_DNA)
-		}
-		if (!A_DNA) {
-			let A_DNA_Data = await loader.loadAsync('/assets/models/A_DNA.glb')
-			A_DNA = A_DNA_Data.scene
-			//originally this was data.scene.children[0]; to just get first one
-			A_DNA.rotation.set(Math.PI, Math.PI, Math.PI / 2)
-		}
-		scene.add(A_DNA)
-		break
-	case 'B':
-		if (G_DNA) {
-			console.log('Removing G_DNA:', G_DNA)
-			scene.remove(G_DNA)
-		}
-		if (A_DNA) {
-			console.log('Removing A_DNA:', A_DNA)
-			scene.remove(A_DNA)
-		}
-		if (Z_DNA) {
-			console.log('Removing Z_DNA:', Z_DNA)
-			scene.remove(Z_DNA)
-		}
-		if (!B_DNA) {
-			let B_DNA_Data = await loader.loadAsync('/assets/models/B_DNA.glb')
-			B_DNA = B_DNA_Data.scene
-			B_DNA.rotation.set(Math.PI, Math.PI, Math.PI / 2)
-		}
-		scene.add(B_DNA)
-		break
-	case 'Z':
-		if (G_DNA) {
-			console.log('Removing G_DNA:', G_DNA)
-			scene.remove(G_DNA)
-		}
-		if (A_DNA) {
-			console.log('Removing A_DNA:', A_DNA)
-			scene.remove(A_DNA)
-		}
-		if (B_DNA) {
-			console.log('Removing B_DNA:', B_DNA)
-			scene.remove(B_DNA)
-		}
-		if (!Z_DNA) {
-			let Z_DNA_Data = await loader.loadAsync('/assets/models/Z_DNA.glb')
-			Z_DNA = Z_DNA_Data.scene
-			Z_DNA.rotation.set(Math.PI, Math.PI, Math.PI / 2)
-		}
-		scene.add(Z_DNA)
-		break
-	case 'G': // New case for 'G'
-		if (A_DNA) {
-			console.log('Removing A_DNA:', A_DNA)
-			scene.remove(A_DNA)
-		}
-		if (B_DNA) {
-			console.log('Removing B_DNA:', B_DNA)
-			scene.remove(B_DNA)
-		}
-		if (Z_DNA) {
-			console.log('Removing Z_DNA:', Z_DNA)
-			scene.remove(Z_DNA)
-		}
-		if (!G_DNA) {
-			let G_DNA_Data = await loader.loadAsync('/assets/models/G_DNA.glb')
-			G_DNA = G_DNA_Data.scene
-			G_DNA.rotation.set(Math.PI, Math.PI, Math.PI / 2)
-		}
-		scene.add(G_DNA)
-		break
-	default:
-		console.error('Invalid DNA type')
-	}
+
+
+async function loadData() {
+	A_DNA_Data = await loader.loadAsync('/assets/models/A_DNA.glb')
+	A_DNA_Data.scene.rotation.set(Math.PI, Math.PI, Math.PI / 2)
+	B_DNA_Data = await loader.loadAsync('/assets/models/B_DNA.glb')
+	B_DNA_Data.scene.rotation.set(Math.PI, Math.PI, Math.PI / 2)
+	G_DNA_Data = await loader.loadAsync('/assets/models/G_DNA.glb')
+	G_DNA_Data.scene.rotation.set(Math.PI, Math.PI, Math.PI / 2)
+	Z_DNA_Data = await loader.loadAsync('/assets/models/Z_DNA.glb')
+	G_DNA_Data.scene.rotation.set(Math.PI, Math.PI, Math.PI / 2)
+
 }
+
+async function init(dnaType) {
+	// removes any other dna first
+	scene.getObjectsByProperty('type', 'Group').forEach(object => {
+		scene.remove(object)
+	})
+	const dnaDataObject = eval(`${dnaType}_DNA_Data`)
+	scene.add(dnaDataObject.scene)
+}
+
+
+// loadDNA function
+// async function init(dnaType) {
+// 	switch (dnaType) {
+// 	case 'A':
+// 		if (B_DNA) {
+// 			console.log('Removing B_DNA:', B_DNA)
+// 			scene.remove(B_DNA)
+// 		}
+// 		if (Z_DNA) {
+// 			console.log('Removing Z_DNA:', Z_DNA)
+// 			scene.remove(Z_DNA)
+// 		}
+// 		if (G_DNA) {
+// 			console.log('Removing G_DNA:', G_DNA)
+// 			scene.remove(G_DNA)
+// 		}
+// 		if (!A_DNA) {
+// 			let A_DNA_Data = await loader.loadAsync('/assets/models/A_DNA.glb')
+// 			A_DNA = A_DNA_Data.scene
+// 			//originally this was data.scene.children[0]; to just get first one
+// 			A_DNA.rotation.set(Math.PI, Math.PI, Math.PI / 2)
+// 		}
+// 		scene.add(A_DNA)
+// 		break
+// 	case 'B':
+// 		if (G_DNA) {
+// 			console.log('Removing G_DNA:', G_DNA)
+// 			scene.remove(G_DNA)
+// 		}
+// 		if (A_DNA) {
+// 			console.log('Removing A_DNA:', A_DNA)
+// 			scene.remove(A_DNA)
+// 		}
+// 		if (Z_DNA) {
+// 			console.log('Removing Z_DNA:', Z_DNA)
+// 			scene.remove(Z_DNA)
+// 		}
+// 		if (!B_DNA) {
+// 			let B_DNA_Data = await loader.loadAsync('/assets/models/B_DNA.glb')
+// 			B_DNA = B_DNA_Data.scene
+// 			B_DNA.rotation.set(Math.PI, Math.PI, Math.PI / 2)
+// 		}
+// 		scene.add(B_DNA)
+// 		break
+// 	case 'Z':
+// 		if (G_DNA) {
+// 			console.log('Removing G_DNA:', G_DNA)
+// 			scene.remove(G_DNA)
+// 		}
+// 		if (A_DNA) {
+// 			console.log('Removing A_DNA:', A_DNA)
+// 			scene.remove(A_DNA)
+// 		}
+// 		if (B_DNA) {
+// 			console.log('Removing B_DNA:', B_DNA)
+// 			scene.remove(B_DNA)
+// 		}
+// 		if (!Z_DNA) {
+// 			let Z_DNA_Data = await loader.loadAsync('/assets/models/Z_DNA.glb')
+// 			Z_DNA = Z_DNA_Data.scene
+// 			Z_DNA.rotation.set(Math.PI, Math.PI, Math.PI / 2)
+// 		}
+// 		scene.add(Z_DNA)
+// 		break
+// 	case 'G': // New case for 'G'
+// 		if (A_DNA) {
+// 			console.log('Removing A_DNA:', A_DNA)
+// 			scene.remove(A_DNA)
+// 		}
+// 		if (B_DNA) {
+// 			console.log('Removing B_DNA:', B_DNA)
+// 			scene.remove(B_DNA)
+// 		}
+// 		if (Z_DNA) {
+// 			console.log('Removing Z_DNA:', Z_DNA)
+// 			scene.remove(Z_DNA)
+// 		}
+// 		if (!G_DNA) {
+// 			let G_DNA_Data = await loader.loadAsync('/assets/models/G_DNA.glb')
+// 			G_DNA = G_DNA_Data.scene
+// 			G_DNA.rotation.set(Math.PI, Math.PI, Math.PI / 2)
+// 		}
+// 		scene.add(G_DNA)
+// 		break
+// 	default:
+// 		console.error('Invalid DNA type')
+// 	}
+// }
 
 function start() {
 	loop.start()
@@ -154,7 +181,8 @@ function stop() {
 async function main() {
 	const container = document.querySelector('#scene-container')
 	initializeWorld(container)
-	await init('A')
+	await loadData()
+	// await init('B') //TODO
 	start()
 
 	const dnaInfo = document.getElementById('dna-info')

@@ -44,6 +44,12 @@ module.exports = {
 		'semi': [
 			'error',
 			'never'
+		],
+		'no-undef': [
+			'warn'
+		],
+		'@typescript-eslint/no-unused-vars': [
+			'warn'
 		]
 	}
 }
