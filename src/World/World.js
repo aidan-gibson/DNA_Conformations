@@ -7,6 +7,9 @@ import { createControls } from './systems/controls.js';
 import { createRenderer } from './systems/renderer.js';
 import { Resizer } from './systems/Resizer.js';
 import { Loop } from './systems/Loop.js';
+import { GUI } from 'dat.gui'
+
+
 
 let camera;
 let controls;
@@ -29,6 +32,8 @@ class World {
     scene.add(ambientLight, mainLight);
 
     const resizer = new Resizer(container, camera, renderer);
+
+
   }
 
   async init() {
@@ -43,6 +48,19 @@ class World {
 
     // adjust camera
     // camera.position.set(-11.5, 1.5, 6.5);
+
+    // GUI
+    const gui = new GUI()
+    const cubeFolder = gui.addFolder('Z-DNA')
+    cubeFolder.add(Z_DNA.rotation, 'x', 0, Math.PI * 2)
+    cubeFolder.add(Z_DNA.rotation, 'y', 0, Math.PI * 2)
+    cubeFolder.add(Z_DNA.rotation, 'z', 0, Math.PI * 2)
+    cubeFolder.open()
+
+    const cameraFolder = gui.addFolder('Camera')
+    cameraFolder.add(camera.position, 'z', 0, 10)
+    // cameraFolder.add(camera.zoom, 'zoom')
+    cameraFolder.open()
   }
 
   render() {
@@ -51,6 +69,7 @@ class World {
 
   start() {
     loop.start();
+
   }
 
   stop() {
