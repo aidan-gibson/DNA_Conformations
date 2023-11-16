@@ -2,18 +2,17 @@ import Swal from 'sweetalert2'
 import * as THREE from 'three'
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js'
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js'
-import { createCamera } from './World/components/camera.js'
 import { createLights } from './World/components/lights.js'
 import { createScene } from './World/components/scene.js'
 import { Resizer } from './World/systems/Resizer.js'
 import { Loop } from './World/systems/Loop.js'
 import { Color, Scene } from 'three'
 import { WebGLRenderer } from 'three'
+import { PerspectiveCamera } from 'three'
 
 
 
 let camera
-let renderer
 let scene
 let loop
 let loader
@@ -26,10 +25,11 @@ let G_DNA = null
 
 
 function initializeWorld(container) {
-	camera = createCamera()
-	// renderer = createRenderer()
+	// camera = createCamera()
+	const camera = new PerspectiveCamera(65, window.innerWidth / window.innerHeight, 0.1, 1000)
+	camera.position.set(0, 20, 45)
+	camera.zoom = 1
 	const renderer = new WebGLRenderer({ antialias: true })
-	// renderer.physicallyCorrectLights = true DEPRECATED. use renderer.useLegacyLights instead (but do i even wanna? TODO)
 	scene = createScene()
 	loop = new Loop(camera, scene, renderer)
 	container.append(renderer.domElement)
