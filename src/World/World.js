@@ -33,6 +33,7 @@ class World {
     this.A_DNA = null;
     this.B_DNA = null;
     this.Z_DNA = null;
+    this.G_DNA = null;
 
     const resizer = new Resizer(container, camera, renderer);
   }
@@ -48,6 +49,10 @@ class World {
           console.log('Removing Z_DNA:', this.Z_DNA);
           scene.remove(this.Z_DNA);
         }
+        if (this.G_DNA) {
+          console.log('Removing G_DNA:', this.G_DNA);
+          scene.remove(this.G_DNA);
+        }
         if (!this.A_DNA) {
           let A_DNA_Data = await loader.loadAsync('/assets/models/A_DNA.glb');
           this.A_DNA = A_DNA_Data.scene;
@@ -56,6 +61,10 @@ class World {
         scene.add(this.A_DNA);
         break;
       case 'B':
+        if (this.G_DNA) {
+          console.log('Removing G_DNA:', this.G_DNA);
+          scene.remove(this.G_DNA);
+        }
         if (this.A_DNA) {
           console.log('Removing A_DNA:', this.A_DNA);
           scene.remove(this.A_DNA);
@@ -72,6 +81,10 @@ class World {
         scene.add(this.B_DNA);
         break;
         case 'Z':
+          if (this.G_DNA) {
+            console.log('Removing G_DNA:', this.G_DNA);
+            scene.remove(this.G_DNA);
+          }
           if (this.A_DNA) {
             console.log('Removing A_DNA:', this.A_DNA);
             scene.remove(this.A_DNA);
@@ -87,7 +100,26 @@ class World {
           }
           scene.add(this.Z_DNA);
           break;
-        
+          case 'G': // New case for 'G'
+          if (this.A_DNA) {
+            console.log('Removing A_DNA:', this.A_DNA);
+            scene.remove(this.A_DNA);
+          }
+          if (this.B_DNA) {
+            console.log('Removing B_DNA:', this.B_DNA);
+            scene.remove(this.B_DNA);
+          }
+          if (this.Z_DNA) {
+            console.log('Removing Z_DNA:', this.Z_DNA);
+            scene.remove(this.Z_DNA);
+          }
+          if (!this.G_DNA) {
+            let G_DNA_Data = await loader.loadAsync('/assets/models/G_DNA.glb');
+            this.G_DNA = G_DNA_Data.scene;
+            this.G_DNA.rotation.set(Math.PI, Math.PI, Math.PI / 2);
+          }
+          scene.add(this.G_DNA);
+          break;
       default:
         console.error('Invalid DNA type');
     }

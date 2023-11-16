@@ -42,3 +42,13 @@ h1 {
 * {
   font-family: 'SpaceGrotesk'
 }
+button {
+  font-size: 1.2em; /* Increase the font size */
+  padding: 10px 20px; /* Add more padding for larger button size */
+  width: auto; /* You can set a specific width or use 'auto' */
+  height: auto; /* You can set a specific height or use 'auto' */
+}
+#dna-info {
+  font-size: 1.2rem; /* Responsive font size */
+  /* Additional responsive styling */
+}

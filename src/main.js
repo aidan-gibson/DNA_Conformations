@@ -19,7 +19,7 @@ This demo was made using raw mmCIF (macromolecular Crystallographic Information 
     icon: 'info',
     confirmButtonText: 'Cool'
   })
-  document.querySelectorAll('#A-DNA, #B-DNA, #Z-DNA').forEach(button => {
+  document.querySelectorAll('#A-DNA, #B-DNA, #Z-DNA, #G-DNA').forEach(button => {
     button.addEventListener('click', async (event) => {
       const dnaType = event.target.id.split('-')[0];
       await world.init(dnaType);
@@ -60,6 +60,19 @@ This demo was made using raw mmCIF (macromolecular Crystallographic Information 
             Segments of DNA that cells have methylated for regulatory purposes may adopt the Z geometry, in which the strands turn about the helical axis the opposite way to A-DNA and B-DNA. There is also evidence of protein-DNA complexes forming Z-DNA structures. 
             <br><a href="https://en.wikipedia.org/wiki/Z-DNA?useskin=vector">More Info</a> <br>
     <a href="https://www.rcsb.org/structure/4ocb">Crystallogrpahic Data Source</a>
+  `,
+            icon: 'info',
+            confirmButtonText: 'Cool'
+          })
+          break;
+          case 'G':
+          dnaInfo.textContent = 'Displaying G-quadruplex structure.';
+          Swal.fire({
+            title: 'G-quadruplex',
+            html: `
+            G-quadruplex structures are helical in shape and can form one, two, or four strands. The shown G-quadruplex structure was formed by Bromo-substituted Human Telomeric DNA, and imaged via X-Ray Diffraction, like the others.   
+            <br><a href="https://en.wikipedia.org/wiki/G-quadruplex?useskin=vector">More Info</a> <br>
+    <a href="https://www.rcsb.org/structure/6jkn">Crystallogrpahic Data Source</a>
   `,
             icon: 'info',
             confirmButtonText: 'Cool'
