@@ -2,12 +2,11 @@ import { createCamera } from './components/camera.js'
 import { createLights } from './components/lights.js'
 import { createScene } from './components/scene.js'
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js'
-import { createControls } from './systems/controls.js'
 import { createRenderer } from './systems/renderer.js'
 import { Resizer } from './systems/Resizer.js'
 import { Loop } from './systems/Loop.js'
 import { Color, Scene } from 'three'
-
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js'
 
 let camera
 let controls
@@ -23,7 +22,21 @@ class World {
 		scene = createScene()
 		loop = new Loop(camera, scene, renderer)
 		container.append(renderer.domElement)
-		controls = createControls(camera, renderer.domElement)
+
+
+
+		const controls = new OrbitControls(camera, renderer.domElement)
+
+		controls.enableDamping = true
+		controls.autoRotate = true
+		controls.autoRotateSpeed = 2.5
+		// controls.enableZoom = false;
+		// forward controls.update to our custom .tick method
+		controls.tick = () => controls.update()
+
+
+
+
 		const { ambientLight, mainLight } = createLights()
 		loader = new GLTFLoader()
 		loop.updatables.push(controls)
