@@ -1,37 +1,24 @@
 import { World } from './World/World.js';
 let world;
-
-
 async function main() {
   // Get a reference to the container element
   const container = document.querySelector('#scene-container');
 
   // create a new world
   world = new World(container);
-
   // complete async tasks
-  await world.init();
+  await world.init('A');
 
   // start the animation loop
   world.start();
 
-  // Add event listeners for the buttons
-  document.getElementById('A-DNA').addEventListener('click', initADNA);
-  document.getElementById('B-DNA').addEventListener('click', initBDNA);
-  document.getElementById('Z-DNA').addEventListener('click', initZDNA);
-
-}
-
-async function initADNA() {
-  await world.adna_scene();
-}
-
-async function initBDNA() {
-  await world.bdna_scene();
-}
-
-async function initZDNA() {
-  await world.zdna_scene();
+  // Add a single event listener for all buttons
+  document.querySelectorAll('#A-DNA, #B-DNA, #Z-DNA').forEach(button => {
+    button.addEventListener('click', async (event) => {
+      const dnaType = event.target.id.split('-')[0]; // Extracts 'A', 'B', or 'Z' from the ID
+      await world.init(dnaType);
+    });
+  });
 }
 
 main().catch((err) => {
