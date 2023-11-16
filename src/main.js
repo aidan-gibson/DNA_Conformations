@@ -5,10 +5,10 @@ import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js'
 import { createCamera } from './World/components/camera.js'
 import { createLights } from './World/components/lights.js'
 import { createScene } from './World/components/scene.js'
-import { createRenderer } from './World/systems/renderer.js'
 import { Resizer } from './World/systems/Resizer.js'
 import { Loop } from './World/systems/Loop.js'
 import { Color, Scene } from 'three'
+import { WebGLRenderer } from 'three'
 
 
 
@@ -27,7 +27,9 @@ let G_DNA = null
 
 function initializeWorld(container) {
 	camera = createCamera()
-	renderer = createRenderer()
+	// renderer = createRenderer()
+	const renderer = new WebGLRenderer({ antialias: true })
+	// renderer.physicallyCorrectLights = true DEPRECATED. use renderer.useLegacyLights instead (but do i even wanna? TODO)
 	scene = createScene()
 	loop = new Loop(camera, scene, renderer)
 	container.append(renderer.domElement)
