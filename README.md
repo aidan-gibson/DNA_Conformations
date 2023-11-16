@@ -17,7 +17,7 @@ for testing, `npx vite --host` (host part so it's exposed so others on my net)
 # todo
 
 * de-oop / general cleanup
-  * yeet birds.js and loadbirds junk
+  * de-oop World; shouldn't b using classes
   * typescript
   * go thru three.js docs, learn it all (it's finite) redo things as i go
 src/main.js > src/World/World.js
