@@ -32,9 +32,12 @@ async function loadBirds() {
 
   const Z_DNA = Z_DNA_Data.scene;
   // Z_DNA.position.set(10, -2.5, -10);
-  // Z_DNA.rotation.set(new THREE.Vector3( 0, 0, Math.PI / 2));
-  Z_DNA.rotation.x = Math.PI ;
-  console.log('Squaaawk! Z_DNA', Z_DNA);
+
+  // Z_DNA.rotation.z = Math.PI;
+  B_DNA.rotation.set(Math.PI,Math.PI,Math.PI/2) ;
+  Z_DNA.rotation.set(Math.PI,Math.PI,Math.PI/2) ;
+  A_DNA.rotation.set(Math.PI,Math.PI,Math.PI/2) ;
+  // console.log('Squaaawk! Z_DNA', Z_DNA);
 
 
   return {
