@@ -17,7 +17,11 @@ for testing, `npx vite --host` (host part so it's exposed so others on my net)
 # todo
 
 * de-oop / general cleanup
-  * yeet other js files
+  * keeping resizer.js modularized fs, makes sense
+  * Loop.js is on thin ice but I don't care enough to fuck w it rn
+
+
+
   * denastify the scene.add / scene.remove bs
   * typescript
   * go thru three.js docs, learn it all (it's finite) redo things as i go
