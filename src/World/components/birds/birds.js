@@ -1,5 +1,4 @@
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
-
 import { setupModel } from './setupModel.js';
 
 async function loadBirds() {
@@ -9,10 +8,14 @@ async function loadBirds() {
     loader.loadAsync('/assets/models/Parrot.glb'),
     loader.loadAsync('/assets/models/Flamingo.glb'),
     loader.loadAsync('/assets/models/Stork.glb'),
-    loader.loadAsync('/assets/models/7ECG.glb'),
+    // loader.loadAsync('/assets/models/7ECG.glb'),
+    loader.loadAsync('/assets/models/A-DNA.glb'),
+    // loader.loadAsync('/assets/models/B-DNA.glb'),
+    // loader.loadAsync('/assets/models/C-DNA.glb'),
   ]);
 
-  // console.log('Squaaawk!', parrotData);
+  console.log('Squaaawk!', parrotData);
+  console.log('Squaaawk!', DNAData);
 
   const parrot = setupModel(parrotData);
   parrot.position.set(0, 0, 2.5);
@@ -23,7 +26,8 @@ async function loadBirds() {
   const stork = setupModel(storkData);
   stork.position.set(0, -2.5, -10);
 
-  const DNA = setupModel(DNAData);
+  // const DNA = setupModel(DNAData);
+  const DNA = DNAData.scene;
   DNA.position.set(10, -2.5, -10);
 
   return {
