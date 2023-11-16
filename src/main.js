@@ -66,7 +66,7 @@ async function loadData() {
 	G_DNA_Data = await loader.loadAsync('/assets/models/G_DNA.glb')
 	G_DNA_Data.scene.rotation.set(Math.PI, Math.PI, Math.PI / 2)
 	Z_DNA_Data = await loader.loadAsync('/assets/models/Z_DNA.glb')
-	G_DNA_Data.scene.rotation.set(Math.PI, Math.PI, Math.PI / 2)
+	Z_DNA_Data.scene.rotation.set(Math.PI, Math.PI, Math.PI / 2)
 
 }
 
