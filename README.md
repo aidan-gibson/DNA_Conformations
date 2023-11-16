@@ -17,10 +17,11 @@ for testing, `npx vite --host` (host part so it's exposed so others on my net)
 # todo
 
 * de-oop / general cleanup
-  * de-oop World; shouldn't b using classes
+  * de-ooped but some code still nasty and need to yeet other js files
   * typescript
   * go thru three.js docs, learn it all (it's finite) redo things as i go
 * update netlify
+* chrome consol deprecated stuff
 src/main.js > src/World/World.js
 
 * cookie to remember the init start open popup (dies in 5 min or smth short)
