@@ -41,3 +41,17 @@ music
 optim favicons
 link to repo (gh icon in upper right corner or smth)
 WebXR (VR/AR test)
+
+
+
+# logistical
+
+eslint stuff
+`npm init @eslint/config`
+What type of modules does ur proj use? Javascript modules (import / export)
+config in js bc that's the latest https://eslint.org/docs/latest/use/configure/configuration-files-new `.eslintrc.js`
+typescript: yes
+code runs in: browser (not node)
+tabs
+single quotes
+no semi-colons
