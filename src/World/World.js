@@ -55,6 +55,7 @@ class World {
         if (!this.A_DNA) {
           let A_DNA_Data = await loader.loadAsync('/assets/models/A_DNA.glb');
           this.A_DNA = A_DNA_Data.scene;
+          //originally this was data.scene.children[0]; to just get first one
           this.A_DNA.rotation.set(Math.PI, Math.PI, Math.PI / 2);
         }
         scene.add(this.A_DNA);
@@ -125,37 +126,6 @@ class World {
   }
   
 
-
-
-
-  // async init(dnaType) {
-  //   // const { A_DNA, B_DNA, Z_DNA } = await loadBirds();
-  //   switch (dnaType) {
-  //       case 'A':
-  //           let A_DNA_Data = await loader.loadAsync('/assets/models/A_DNA.glb');
-  //           this.A_DNA = A_DNA_Data.scene;
-  //           this.A_DNA.rotation.set(Math.PI,Math.PI,Math.PI/2) ;
-  //           scene.add(A_DNA);
-  //           break;
-  //       case 'B':
-  //         if (A_DNA) {
-  //           console.log('Removing A_DNA:', A_DNA);
-  //           scene.remove(A_DNA);
-  //         } else {
-  //           console.log('A_DNA not found or not loaded');
-  //         }
-  //         let B_DNA_Data = await loader.loadAsync('/assets/models/B_DNA.glb');
-  //         B_DNA = B_DNA_Data.scene;
-  //         B_DNA.rotation.set(Math.PI,Math.PI,Math.PI/2) ;
-  //         scene.add(B_DNA);
-  //           break;
-  //       case 'Z':
-  //           scene.add(Z_DNA);
-  //           break;
-  //       default:
-  //           console.error('Invalid DNA type');
-  //   }
-  // }
   // async init() {
   //   const { A_DNA, B_DNA, Z_DNA } = await loadBirds();
   //   scene.add(A_DNA);
