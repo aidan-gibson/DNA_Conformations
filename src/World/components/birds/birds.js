@@ -28,10 +28,10 @@ async function loadBirds() {
 
   // const DNA = setupModel(A_DNA);
   const A_DNA = A_DNA_Data.scene;
-  A_DNA.position.set(10, -2.5, -10);
+  // A_DNA.position.set(10, -2.5, -10);
 
   const B_DNA = B_DNA_Data.scene;
-  B_DNA.position.set(10, -2.5, -10);
+  // B_DNA.position.set(10, -2.5, -10);
   return {
     parrot,
     flamingo,
