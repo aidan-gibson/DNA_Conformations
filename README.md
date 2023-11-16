@@ -1,3 +1,8 @@
+This entire thing is fucking horrible and should be un-OOPed and simplified
+
+
+
+
 src/main.js > src/World/World.js
 
 import { loadBirds } from './components/birds/birds.js';
