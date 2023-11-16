@@ -6,9 +6,9 @@ async function loadBirds() {
   const loader = new GLTFLoader();
 
   const [A_DNA_Data, B_DNA_Data, Z_DNA_Data] = await Promise.all([
-    loader.loadAsync('/assets/models/A_DNA.glb'),
-    loader.loadAsync('/assets/models/B_DNA.glb'),
-    loader.loadAsync('/assets/models/Z_DNA.glb'),
+    loader.loadAsync('/public/assets/models/A_DNA.glb'),
+    loader.loadAsync('/public/assets/models/B_DNA.glb'),
+    loader.loadAsync('/public/assets/models/Z_DNA.glb'),
   ]);
 
   // console.log('Squaaawk!', parrotData);

@@ -15,4 +15,10 @@ import { createRenderer } from './systems/renderer.js';
 import { Resizer } from './systems/Resizer.js';
 import { Loop } from './systems/Loop.js';
 
-npx vite --host (so it's exposed)
+for testing, `npx vite --host` (host part so it's exposed so others on my net)
+
+
+`npx vite build` outputs to dist/ for actual deployment
+
+
+can get rid of birds.js and loadbirds junk etc
