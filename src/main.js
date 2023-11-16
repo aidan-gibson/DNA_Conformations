@@ -2,14 +2,9 @@ import Swal from 'sweetalert2'
 import * as THREE from 'three'
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js'
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js'
-import { createLights } from './World/components/lights.js'
-import { createScene } from './World/components/scene.js'
 import { Resizer } from './World/systems/Resizer.js'
 import { Loop } from './World/systems/Loop.js'
-import { Color, Scene } from 'three'
-import { WebGLRenderer } from 'three'
-import { PerspectiveCamera } from 'three'
-
+import { Color, Scene, WebGLRenderer, PerspectiveCamera, DirectionalLight, HemisphereLight } from 'three'
 
 
 
@@ -30,7 +25,9 @@ function initializeWorld(container) {
 	camera.position.set(0, 20, 45)
 	camera.zoom = 1
 	const renderer = new WebGLRenderer({ antialias: true })
-	scene = createScene()
+	scene = new Scene()
+
+	scene.background = new Color('skyblue')
 	loop = new Loop(camera, scene, renderer)
 	container.append(renderer.domElement)
 
@@ -40,7 +37,15 @@ function initializeWorld(container) {
 	controls.autoRotateSpeed = 2.5
 	controls.tick = () => controls.update()
 
-	const { ambientLight, mainLight } = createLights()
+	const ambientLight = new HemisphereLight(
+		'white',
+		'darkslategrey',
+		5,
+	)
+
+	const mainLight = new DirectionalLight('white', 4)
+	mainLight.position.set(10, 10, 10)
+
 	loader = new GLTFLoader()
 	loop.updatables.push(controls)
 	scene.add(ambientLight, mainLight)
