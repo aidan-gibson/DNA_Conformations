@@ -141,7 +141,7 @@ async function main() {
 					title: 'A-DNA',
 					html: `
 			          It was long thought that the A form only occurs in dehydrated samples of DNA in the laboratory, such as those used in crystallographic experiments, and in hybrid pairings of DNA and RNA strands, but DNA dehydration does occur in vivo, and A-DNA is now known to have biological functions. 
-			          <br><a href="https://en.wikipedia.org/wiki/A-DNA?useskin=vector">More Info</a> <br>
+			          <br><a href="https://www.ncbi.nlm.nih.gov/books/NBK6545/">More Info</a> <br>
 			  <a href="https://www.rcsb.org/structure/4izq">Crystallogrpahic Data Source</a>
 			`,
 					icon: 'info',
@@ -167,7 +167,7 @@ async function main() {
 					title: 'Z-DNA',
 					html: `
 			          Segments of DNA that cells have methylated for regulatory purposes may adopt the Z geometry, in which the strands turn about the helical axis the opposite way to A-DNA and B-DNA. There is also evidence of protein-DNA complexes forming Z-DNA structures. 
-			          <br><a href="https://en.wikipedia.org/wiki/Z-DNA?useskin=vector">More Info</a> <br>
+			          <br><a href="https://link.springer.com/article/10.1007/s12551-019-00534-1">More Info</a> <br>
 			  <a href="https://www.rcsb.org/structure/4ocb">Crystallogrpahic Data Source</a>
 			`,
 					icon: 'info',
@@ -180,7 +180,7 @@ async function main() {
 					title: 'G-quadruplex',
 					html: `
 			          G-quadruplex structures are helical in shape and can form one, two, or four strands. The shown G-quadruplex structure was formed by Bromo-substituted Human Telomeric DNA, and imaged via X-Ray Diffraction, like the others.   
-			          <br><a href="https://en.wikipedia.org/wiki/G-quadruplex?useskin=vector">More Info</a> <br>
+			          <br><a href="https://academic.oup.com/nar/article/48/1/1/5637585">More Info</a> <br>
 			  <a href="https://www.rcsb.org/structure/6jkn">Crystallogrpahic Data Source</a>
 			`,
 					icon: 'info',
@@ -193,7 +193,7 @@ async function main() {
 					title: 'C-DNA',
 					html: `
 			          C-DNA (not to be confused with cDNA, complementary DNA) is, as far as we know, a purely synthetic DNA conformation. Low humidity and Lithium and Magnesium ions can induce this state, but we have not seen it occur naturally in vivo before. It is also relatively unstable.
-			          <br><a href="https://en.wikipedia.org/wiki/C-DNA?useskin=vector">More Info</a> <br>
+			          <br><a href="https://bio.libretexts.org/Bookshelves/Genetics/Working_with_Molecular_Genetics_(Hardison)/Unit_I%3A_Genes_Nucleic_Acids_Genomes_and_Chromosomes/2%3A_Structures_of_Nucleic_Acids/2.5%3A_B-Form_A-Form_and_Z-Form_of_DNA">More Info</a> <br>
 			  <a href="https://www.rcsb.org/structure/199D">Crystallogrpahic Data Source</a>
 			`,
 					icon: 'info',
@@ -219,7 +219,7 @@ async function main() {
 					title: 'H-DNA',
 					html: `
 			          H-DNA, also known as Triple-stranded DNA or Triplex-DNA, is essentially a conventional B-DNA molecule with an extra strand, forming a triple helix.    
-			          <br><a href="https://en.wikipedia.org/wiki/Triple-stranded_DNA?useskin=vector">More Info</a> <br>
+			          <br><a href="https://pubs.rsc.org/en/content/articlehtml/2022/sc/d2sc01793h">More Info</a> <br>
 			  <a href="https://www.rcsb.org/structure/1W86">Crystallogrpahic Data Source</a>
 			`,
 					icon: 'info',
@@ -232,7 +232,7 @@ async function main() {
 					title: 'i-motif',
 					html: `i-motif (intercalated-motif) DNA are similar to G-quadruplex discussed prior, the chief differentiation being that i-motif DNA are formed in cytosine-rich regions and G-quadruplex structures are formed in guanine-rich regions of DNA. This four-stranded structure was originally discovered <a href="https://www.nature.com/articles/363561a0">in vitro (Gehring et al 1993)</a> but a <a href="https://www.nature.com/articles/s41557-018-0046-3">2018 discovery (Zeraati et al)</a> found them in human nuclei.
                       
-                  <br><a href="https://en.wikipedia.org/w/index.php?title=I-motif_DNA&useskin=vector">More Info</a> <br>
+                  <br><a href="https://academic.oup.com/nar/article/46/16/8038/5075032">More Info</a> <br>
           <a href="https://www.rcsb.org/structure/8cxf">Crystallogrpahic Data Source</a>
         `,
 					icon: 'info',

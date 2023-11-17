@@ -17,7 +17,8 @@ for testing, `npx vite --host` (host part so it's exposed so others on my net)
 # todo
 
 transparency?
-
+hovering over link gives iframe 
+favicon
 
 
   * typescript
