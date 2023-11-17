@@ -37,15 +37,6 @@ assets loading bar
 
 # logistical
 
-eslint stuff
-`npm init @eslint/config`
-What type of modules does ur proj use? Javascript modules (import / export)
-config in js bc that's the latest https://eslint.org/docs/latest/use/configure/configuration-files-new `.eslintrc.js`
-typescript: yes
-code runs in: node (not browser)
-tabs
-single quotes
-no semi-colons
 
 
 use vite, not webpack
