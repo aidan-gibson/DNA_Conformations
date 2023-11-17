@@ -19,6 +19,7 @@ let G_DNA_Data = null
 let C_DNA_Data = null
 let E_DNA_Data = null
 let H_DNA_Data = null
+let I_DNA_Data = null
 
 
 
@@ -83,6 +84,8 @@ async function loadData() {
 	E_DNA_Data.scene.rotation.set(Math.PI, Math.PI, Math.PI / 2)
 	H_DNA_Data = await loader.loadAsync('/assets/models/H_DNA.glb')
 	H_DNA_Data.scene.rotation.set(Math.PI, Math.PI, Math.PI / 2)
+	I_DNA_Data = await loader.loadAsync('/assets/models/I_DNA.glb')
+	I_DNA_Data.scene.rotation.set(Math.PI, Math.PI, Math.PI / 2)
 
 }
 
@@ -125,7 +128,7 @@ async function main() {
 		icon: 'info',
 		confirmButtonText: 'Cool'
 	})
-	document.querySelectorAll('#A-DNA, #B-DNA, #Z-DNA, #G-DNA, #C-DNA, #E-DNA, #H-DNA').forEach(button => {
+	document.querySelectorAll('#A-DNA, #B-DNA, #Z-DNA, #G-DNA, #C-DNA, #E-DNA, #H-DNA, #I-DNA').forEach(button => {
 		button.addEventListener('click', async (event) => {
 			const dnaType = event.target.id.split('-')[0]
 			await init(dnaType)
@@ -189,9 +192,9 @@ async function main() {
 				Swal.fire({
 					title: 'C-DNA',
 					html: `
-			          G-quadruplex structures are helical in shape and can form one, two, or four strands. The shown G-quadruplex structure was formed by Bromo-substituted Human Telomeric DNA, and imaged via X-Ray Diffraction, like the others.   
-			          <br><a href="https://en.wikipedia.org/wiki/G-quadruplex?useskin=vector">More Info</a> <br>
-			  <a href="https://www.rcsb.org/structure/6jkn">Crystallogrpahic Data Source</a>
+			          C-DNA (not to be confused with cDNA, complementary DNA) is, as far as we know, a purely synthetic DNA conformation. Low humidity and Lithium and Magnesium ions can induce this state, but we have not seen it occur naturally in vivo before. It is also relatively unstable.
+			          <br><a href="https://en.wikipedia.org/wiki/C-DNA?useskin=vector">More Info</a> <br>
+			  <a href="https://www.rcsb.org/structure/199D">Crystallogrpahic Data Source</a>
 			`,
 					icon: 'info',
 					confirmButtonText: 'Cool'
@@ -203,8 +206,8 @@ async function main() {
 					title: 'E-DNA',
 					html: `
 			          G-quadruplex structures are helical in shape and can form one, two, or four strands. The shown G-quadruplex structure was formed by Bromo-substituted Human Telomeric DNA, and imaged via X-Ray Diffraction, like the others.   
-			          <br><a href="https://en.wikipedia.org/wiki/G-quadruplex?useskin=vector">More Info</a> <br>
-			  <a href="https://www.rcsb.org/structure/6jkn">Crystallogrpahic Data Source</a>
+			          <br><a href="https://www.nature.com/articles/nsb0900_758">More Info</a> <br>
+			  <a href="https://www.rcsb.org/structure/1F6I">Crystallogrpahic Data Source</a>
 			`,
 					icon: 'info',
 					confirmButtonText: 'Cool'
@@ -213,12 +216,25 @@ async function main() {
 			case 'H':
 				dnaInfo.textContent = 'Displaying H-DNA structure.'
 				Swal.fire({
-					title: 'Triple-Stranded DNA',
+					title: 'H-DNA',
 					html: `
-			          G-quadruplex structures are helical in shape and can form one, two, or four strands. The shown G-quadruplex structure was formed by Bromo-substituted Human Telomeric DNA, and imaged via X-Ray Diffraction, like the others.   
-			          <br><a href="https://en.wikipedia.org/wiki/G-quadruplex?useskin=vector">More Info</a> <br>
-			  <a href="https://www.rcsb.org/structure/6jkn">Crystallogrpahic Data Source</a>
+			          H-DNA, also known as Triple-stranded DNA or Triplex-DNA, is essentially a conventional B-DNA molecule with an extra strand, forming a triple helix.    
+			          <br><a href="https://en.wikipedia.org/wiki/Triple-stranded_DNA?useskin=vector">More Info</a> <br>
+			  <a href="https://www.rcsb.org/structure/1W86">Crystallogrpahic Data Source</a>
 			`,
+					icon: 'info',
+					confirmButtonText: 'Cool'
+				})
+				break
+			case 'I':
+				dnaInfo.textContent = 'Displaying i-motif DNA structure.'
+				Swal.fire({
+					title: 'i-motif',
+					html: `i-motif
+                      
+                  <br><a href="https://en.wikipedia.org/w/index.php?title=I-motif_DNA&useskin=vector">More Info</a> <br>
+          <a href="https://www.rcsb.org/structure/8cxf">Crystallogrpahic Data Source</a>
+        `,
 					icon: 'info',
 					confirmButtonText: 'Cool'
 				})
