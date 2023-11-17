@@ -16,6 +16,9 @@ let A_DNA_Data = null
 let B_DNA_Data = null
 let Z_DNA_Data = null
 let G_DNA_Data = null
+let C_DNA_Data = null
+let E_DNA_Data = null
+let H_DNA_Data = null
 
 
 
@@ -74,6 +77,12 @@ async function loadData() {
 	G_DNA_Data.scene.rotation.set(Math.PI, Math.PI, Math.PI / 2)
 	Z_DNA_Data = await loader.loadAsync('/assets/models/Z_DNA.glb')
 	Z_DNA_Data.scene.rotation.set(Math.PI, Math.PI, Math.PI / 2)
+	C_DNA_Data = await loader.loadAsync('/assets/models/C_DNA.glb')
+	C_DNA_Data.scene.rotation.set(Math.PI, Math.PI, Math.PI / 2)
+	E_DNA_Data = await loader.loadAsync('/assets/models/E_DNA.glb')
+	E_DNA_Data.scene.rotation.set(Math.PI, Math.PI, Math.PI / 2)
+	H_DNA_Data = await loader.loadAsync('/assets/models/H_DNA.glb')
+	H_DNA_Data.scene.rotation.set(Math.PI, Math.PI, Math.PI / 2)
 
 }
 
@@ -116,7 +125,7 @@ async function main() {
 		icon: 'info',
 		confirmButtonText: 'Cool'
 	})
-	document.querySelectorAll('#A-DNA, #B-DNA, #Z-DNA, #G-DNA').forEach(button => {
+	document.querySelectorAll('#A-DNA, #B-DNA, #Z-DNA, #G-DNA, #C-DNA, #E-DNA, #H-DNA').forEach(button => {
 		button.addEventListener('click', async (event) => {
 			const dnaType = event.target.id.split('-')[0]
 			await init(dnaType)
@@ -133,7 +142,7 @@ async function main() {
 			  <a href="https://www.rcsb.org/structure/4izq">Crystallogrpahic Data Source</a>
 			`,
 					icon: 'info',
-					confirmButtonText: 'Cool'
+					confirmButtonText: 'Ayeaye'
 				})
 				break
 			case 'B':
@@ -166,6 +175,45 @@ async function main() {
 				dnaInfo.textContent = 'Displaying G-quadruplex structure.'
 				Swal.fire({
 					title: 'G-quadruplex',
+					html: `
+			          G-quadruplex structures are helical in shape and can form one, two, or four strands. The shown G-quadruplex structure was formed by Bromo-substituted Human Telomeric DNA, and imaged via X-Ray Diffraction, like the others.   
+			          <br><a href="https://en.wikipedia.org/wiki/G-quadruplex?useskin=vector">More Info</a> <br>
+			  <a href="https://www.rcsb.org/structure/6jkn">Crystallogrpahic Data Source</a>
+			`,
+					icon: 'info',
+					confirmButtonText: 'Cool'
+				})
+				break
+			case 'C':
+				dnaInfo.textContent = 'Displaying C-DNA structure.'
+				Swal.fire({
+					title: 'C-DNA',
+					html: `
+			          G-quadruplex structures are helical in shape and can form one, two, or four strands. The shown G-quadruplex structure was formed by Bromo-substituted Human Telomeric DNA, and imaged via X-Ray Diffraction, like the others.   
+			          <br><a href="https://en.wikipedia.org/wiki/G-quadruplex?useskin=vector">More Info</a> <br>
+			  <a href="https://www.rcsb.org/structure/6jkn">Crystallogrpahic Data Source</a>
+			`,
+					icon: 'info',
+					confirmButtonText: 'Cool'
+				})
+				break
+			case 'E':
+				dnaInfo.textContent = 'Displaying E-DNA structure.'
+				Swal.fire({
+					title: 'E-DNA',
+					html: `
+			          G-quadruplex structures are helical in shape and can form one, two, or four strands. The shown G-quadruplex structure was formed by Bromo-substituted Human Telomeric DNA, and imaged via X-Ray Diffraction, like the others.   
+			          <br><a href="https://en.wikipedia.org/wiki/G-quadruplex?useskin=vector">More Info</a> <br>
+			  <a href="https://www.rcsb.org/structure/6jkn">Crystallogrpahic Data Source</a>
+			`,
+					icon: 'info',
+					confirmButtonText: 'Cool'
+				})
+				break
+			case 'H':
+				dnaInfo.textContent = 'Displaying H-DNA structure.'
+				Swal.fire({
+					title: 'Triple-Stranded DNA',
 					html: `
 			          G-quadruplex structures are helical in shape and can form one, two, or four strands. The shown G-quadruplex structure was formed by Bromo-substituted Human Telomeric DNA, and imaged via X-Ray Diffraction, like the others.   
 			          <br><a href="https://en.wikipedia.org/wiki/G-quadruplex?useskin=vector">More Info</a> <br>
