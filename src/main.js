@@ -5,8 +5,9 @@ import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js'
 import { Resizer } from './World/systems/Resizer.js'
 import { Loop } from './World/systems/Loop.js'
 import { Color, Scene, WebGLRenderer, PerspectiveCamera, DirectionalLight, HemisphereLight } from 'three'
-
-
+import {Pane} from 'tweakpane'
+import { VRButton } from 'three/addons/webxr/VRButton.js'
+import iOS from 'is-ios'
 
 let scene
 let loop
@@ -20,11 +21,17 @@ let G_DNA_Data = null
 
 
 function initializeWorld(container) {
+
 	// camera = createCamera()
 	const camera = new PerspectiveCamera(65, window.innerWidth / window.innerHeight, 0.1, 1000)
 	camera.position.set(0, 20, 45)
 	camera.zoom = 1
 	const renderer = new WebGLRenderer({ antialias: true })
+	
+	if(!iOS){
+		renderer.xr.enabled = true
+		document.body.appendChild( VRButton.createButton( renderer ) )}
+
 	scene = new Scene()
 
 	scene.background = new Color('skyblue')
@@ -51,7 +58,7 @@ function initializeWorld(container) {
 	scene.add(ambientLight, mainLight)
 
 	new Resizer(container, camera, renderer)
-
+	// const pane = new Pane();
 
 
 }
@@ -94,6 +101,7 @@ async function main() {
 	const container = document.querySelector('#scene-container')
 	initializeWorld(container)
 	await loadData()
+	
 	// await init('B') //TODO
 	start()
 
@@ -101,10 +109,10 @@ async function main() {
 	Swal.fire({
 		title: 'DNA Helix Geometries',
 		html: `
-    While we are commonly only taught about the most famous and predominant DNA conformation (B-DNA) there are actually <a href="https://en.wikipedia.org/w/index.php?title=Nucleic_acid_double_helix&useskin=vector#Helix_geometries">many different geometries</a> DNA can assume, given different conditions. This is an interactive, 3D exploration of those geometries. 
-    <br>
-This demo was made using raw macromolecular Crystallographic Information Files (mmCIF) publicly available from the <a href="https://www.rcsb.org/RCSB">RCSB Protein Data Bank</a>. <br><br>More info on the file format  <a href="https://pdb101.rcsb.org/learn/guide-to-understanding-pdb-data/beginner%E2%80%99s-guide-to-pdb-structures-and-the-pdbx-mmcif-format">here</a>.
-`,
+	    While we are commonly only taught about the most famous and predominant DNA conformation (B-DNA) there are actually <a href="https://en.wikipedia.org/w/index.php?title=Nucleic_acid_double_helix&useskin=vector#Helix_geometries">many different geometries</a> DNA can assume, given different conditions. This is an interactive, 3D exploration of those geometries. 
+	    <br>
+	This demo was made using raw macromolecular Crystallographic Information Files (mmCIF) publicly available from the <a href="https://www.rcsb.org/RCSB">RCSB Protein Data Bank</a>. <br><br>More info on the file format  <a href="https://pdb101.rcsb.org/learn/guide-to-understanding-pdb-data/beginner%E2%80%99s-guide-to-pdb-structures-and-the-pdbx-mmcif-format">here</a>.
+	`,
 		icon: 'info',
 		confirmButtonText: 'Cool'
 	})
@@ -120,10 +128,10 @@ This demo was made using raw macromolecular Crystallographic Information Files (
 				Swal.fire({
 					title: 'A-DNA',
 					html: `
-            It was long thought that the A form only occurs in dehydrated samples of DNA in the laboratory, such as those used in crystallographic experiments, and in hybrid pairings of DNA and RNA strands, but DNA dehydration does occur in vivo, and A-DNA is now known to have biological functions. 
-            <br><a href="https://en.wikipedia.org/wiki/A-DNA?useskin=vector">More Info</a> <br>
-    <a href="https://www.rcsb.org/structure/4izq">Crystallogrpahic Data Source</a>
-  `,
+			          It was long thought that the A form only occurs in dehydrated samples of DNA in the laboratory, such as those used in crystallographic experiments, and in hybrid pairings of DNA and RNA strands, but DNA dehydration does occur in vivo, and A-DNA is now known to have biological functions. 
+			          <br><a href="https://en.wikipedia.org/wiki/A-DNA?useskin=vector">More Info</a> <br>
+			  <a href="https://www.rcsb.org/structure/4izq">Crystallogrpahic Data Source</a>
+			`,
 					icon: 'info',
 					confirmButtonText: 'Cool'
 				})
@@ -133,10 +141,10 @@ This demo was made using raw macromolecular Crystallographic Information Files (
 				Swal.fire({
 					title: 'B-DNA',
 					html: `
-            B-DNA is the "normal" DNA geometry we're all used to. Strong evidence supports that DNA is predominantly in this form. 
-            <br><a href="https://www.nature.com/articles/nature01595">More Info</a> <br>
-    <a href="https://www.rcsb.org/structure/1zew">Crystallogrpahic Data Source</a>
-  `,
+			          B-DNA is the "normal" DNA geometry we're all used to. Strong evidence supports that DNA is predominantly in this form. 
+			          <br><a href="https://www.nature.com/articles/nature01595">More Info</a> <br>
+			  <a href="https://www.rcsb.org/structure/1zew">Crystallogrpahic Data Source</a>
+			`,
 					icon: 'info',
 					confirmButtonText: 'Cool'
 				})
@@ -146,10 +154,10 @@ This demo was made using raw macromolecular Crystallographic Information Files (
 				Swal.fire({
 					title: 'Z-DNA',
 					html: `
-            Segments of DNA that cells have methylated for regulatory purposes may adopt the Z geometry, in which the strands turn about the helical axis the opposite way to A-DNA and B-DNA. There is also evidence of protein-DNA complexes forming Z-DNA structures. 
-            <br><a href="https://en.wikipedia.org/wiki/Z-DNA?useskin=vector">More Info</a> <br>
-    <a href="https://www.rcsb.org/structure/4ocb">Crystallogrpahic Data Source</a>
-  `,
+			          Segments of DNA that cells have methylated for regulatory purposes may adopt the Z geometry, in which the strands turn about the helical axis the opposite way to A-DNA and B-DNA. There is also evidence of protein-DNA complexes forming Z-DNA structures. 
+			          <br><a href="https://en.wikipedia.org/wiki/Z-DNA?useskin=vector">More Info</a> <br>
+			  <a href="https://www.rcsb.org/structure/4ocb">Crystallogrpahic Data Source</a>
+			`,
 					icon: 'info',
 					confirmButtonText: 'Cool'
 				})
@@ -159,10 +167,10 @@ This demo was made using raw macromolecular Crystallographic Information Files (
 				Swal.fire({
 					title: 'G-quadruplex',
 					html: `
-            G-quadruplex structures are helical in shape and can form one, two, or four strands. The shown G-quadruplex structure was formed by Bromo-substituted Human Telomeric DNA, and imaged via X-Ray Diffraction, like the others.   
-            <br><a href="https://en.wikipedia.org/wiki/G-quadruplex?useskin=vector">More Info</a> <br>
-    <a href="https://www.rcsb.org/structure/6jkn">Crystallogrpahic Data Source</a>
-  `,
+			          G-quadruplex structures are helical in shape and can form one, two, or four strands. The shown G-quadruplex structure was formed by Bromo-substituted Human Telomeric DNA, and imaged via X-Ray Diffraction, like the others.   
+			          <br><a href="https://en.wikipedia.org/wiki/G-quadruplex?useskin=vector">More Info</a> <br>
+			  <a href="https://www.rcsb.org/structure/6jkn">Crystallogrpahic Data Source</a>
+			`,
 					icon: 'info',
 					confirmButtonText: 'Cool'
 				})
