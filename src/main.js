@@ -8,6 +8,18 @@ import { Color, Scene, WebGLRenderer, PerspectiveCamera, DirectionalLight, Hemis
 import {Pane} from 'tweakpane'
 import { VRButton } from 'three/addons/webxr/VRButton.js'
 import iOS from 'is-ios'
+import { noisyLinesBackground } from 'threejs-toys'
+
+noisyLinesBackground({
+	el: document.getElementById('backg'),
+	colors: [0x0231c3, 0xa6d1f6],
+	// colors: [0x87CEEB, 0x900C3F],
+	minStroke: 0.5,
+	maxStroke: 2,
+	timeCoef: 0.0002,
+	coordScale: 2,
+	displacementScale: 0.02
+})
 
 let scene
 let loop
@@ -44,7 +56,7 @@ function initializeWorld(container) {
 	const camera = new PerspectiveCamera(65, window.innerWidth / window.innerHeight, 0.1, 1000)
 	camera.position.set(0, 20, 45)
 	camera.zoom = 1
-	const renderer = new WebGLRenderer({ antialias: true })
+	const renderer = new WebGLRenderer({ antialias: true, alpha: true })
 	
 	if(!iOS){
 		renderer.xr.enabled = true
@@ -52,7 +64,7 @@ function initializeWorld(container) {
 
 	scene = new Scene()
 
-	scene.background = new Color('skyblue')
+	// scene.background = new Color('skyblue')
 	loop = new Loop(camera, scene, renderer)
 	container.append(renderer.domElement)
 

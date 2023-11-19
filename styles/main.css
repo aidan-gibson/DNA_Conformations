@@ -20,19 +20,32 @@ h1 {
   /* make sure that the heading is drawn on top */
   /* z-index: 1; */
 }
-
-#scene-container {
-  /* tell our scene container to take up the full page */
-  position: absolute;
+/* fixes it not filling screen */
+html, body {
+  margin: 0;
+  padding: 0;
   width: 100%;
   height: 100%;
-
-  /*
-    Set the container's background color to the same as the scene's
-    background to prevent flashing on load
-  */
-  background-color: skyblue;
+  overflow: hidden; /* Optional, to prevent scrollbars */
 }
+
+
+#scene-container {
+  position: absolute; /* Position absolutely within #backg */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2; /* Ensures it's above #backg */
+}
+
+#backg {
+  position: relative;
+  width: 100%; /* Ensure it covers the full viewport or desired area */
+  height: 100%;
+  /*z-index: 1;  Higher z-index to ensure it's above other content if needed */
+}
+
 @font-face {
   font-family: 'SpaceGrotesk';
   src: url('SpaceGrotesk-Light.ttf') format('truetype');
