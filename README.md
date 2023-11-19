@@ -13,9 +13,10 @@ for testing, `npx vite --host` (host part so it's exposed so others on my net)
 
 # todo
 
-transparency?
+loading assets bar/circle thingy (music AND 3d objs)
+
 hovering over link gives iframe 
-favicon
+
 
 
   * typescript
