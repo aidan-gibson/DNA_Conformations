@@ -21,6 +21,10 @@ noisyLinesBackground({
 	displacementScale: 0.02
 })
 
+
+
+
+
 let scene
 let loop
 let loader
@@ -32,8 +36,18 @@ let C_DNA_Data = null
 let E_DNA_Data = null
 let H_DNA_Data = null
 let I_DNA_Data = null
+let ambient = new Audio('ambient.mp3')
+let toggleButton = document.getElementById('toggleButton')
 
-
+toggleButton.addEventListener('click', function() {
+	if (ambient.paused) {
+		ambient.play()
+		toggleButton.textContent = 'Pause Ambient'
+	} else {
+		ambient.pause()
+		toggleButton.textContent = 'Play Ambient'
+	}
+})
 // works for EVERY click, but i just want buttons
 // document.addEventListener('click', function() {
 // 	var audio = new Audio('click.mp3')
@@ -144,16 +158,26 @@ async function main() {
 	start()
 
 	const dnaInfo = document.getElementById('dna-info')
+
 	Swal.fire({
 		title: 'DNA Helix Geometries',
 		html: `
-	    While we are commonly only taught about the most famous and predominant DNA conformation (B-DNA) there are actually <a href="https://en.wikipedia.org/w/index.php?title=Nucleic_acid_double_helix&useskin=vector#Helix_geometries">many different geometries</a> DNA can assume, given different conditions. This is an interactive, 3D exploration of those geometries. 
-	    <br>
-	This demo was made using raw macromolecular Crystallographic Information Files (mmCIF) publicly available from the <a href="https://www.rcsb.org/RCSB">RCSB Protein Data Bank</a>. <br><br>More info on the file format  <a href="https://pdb101.rcsb.org/learn/guide-to-understanding-pdb-data/beginner%E2%80%99s-guide-to-pdb-structures-and-the-pdbx-mmcif-format">here</a>.
-	`,
+        While we are commonly only taught about the most famous and predominant DNA conformation (B-DNA) there are actually <a href="https://en.wikipedia.org/w/index.php?title=Nucleic_acid_double_helix&useskin=vector#Helix_geometries" target="_blank">many different geometries</a> DNA can assume, given different conditions. This is an interactive, 3D exploration of those geometries. 
+        <br>
+        This demo was made using raw macromolecular Crystallographic Information Files (mmCIF) publicly available from the <a href="https://www.rcsb.org" target="_blank">RCSB Protein Data Bank</a>. <br><br>More info on the file format  <a href="https://pdb101.rcsb.org/learn/guide-to-understanding-pdb-data/beginner%E2%80%99s-guide-to-pdb-structures-and-the-pdbx-mmcif-format" target="_blank">here</a>.
+    `,
 		icon: 'info',
-		confirmButtonText: 'Cool'
+		confirmButtonText: 'Onward!',
+		showCancelButton: true,
+		cancelButtonText: 'Onward (with sound)',
+		cancelButtonColor: '#3085d6'
+	}).then((result) => {
+		if (result.dismiss === Swal.DismissReason.cancel) {
+			ambient.play()
+			toggleButton.textContent = 'Pause Ambient'
+		}
 	})
+
 	document.querySelectorAll('#A-DNA, #B-DNA, #Z-DNA, #G-DNA, #C-DNA, #E-DNA, #H-DNA, #I-DNA').forEach(button => {
 		button.addEventListener('click', async (event) => {
 			const dnaType = event.target.id.split('-')[0]
@@ -167,11 +191,11 @@ async function main() {
 					title: 'A-DNA',
 					html: `
 			          It was long thought that the A form only occurs in dehydrated samples of DNA in the laboratory, such as those used in crystallographic experiments, and in hybrid pairings of DNA and RNA strands, but DNA dehydration does occur in vivo, and A-DNA is now known to have biological functions. 
-			          <br><a href="https://www.ncbi.nlm.nih.gov/books/NBK6545/">More Info</a> <br>
-			  <a href="https://www.rcsb.org/structure/4izq">Crystallogrpahic Data Source</a>
+			          <br><a href="https://www.ncbi.nlm.nih.gov/books/NBK6545/" target="_blank">More Info</a> <br>
+			  <a href="https://www.rcsb.org/structure/4izq" target="_blank">Crystallogrpahic Data Source</a>
 			`,
 					icon: 'info',
-					confirmButtonText: 'Ayeaye'
+					confirmButtonText: 'Ayeaye!'
 				})
 				break
 			case 'B':
@@ -180,11 +204,11 @@ async function main() {
 					title: 'B-DNA',
 					html: `
 			          B-DNA is the "normal" DNA geometry we're all used to. Strong evidence supports that DNA is predominantly in this form. 
-			          <br><a href="https://www.nature.com/articles/nature01595">More Info</a> <br>
-			  <a href="https://www.rcsb.org/structure/1zew">Crystallogrpahic Data Source</a>
+			          <br><a href="https://www.nature.com/articles/nature01595" target="_blank">More Info</a> <br>
+			  <a href="https://www.rcsb.org/structure/1zew" target="_blank">Crystallogrpahic Data Source</a>
 			`,
 					icon: 'info',
-					confirmButtonText: "Oh wow you're still here?"
+					confirmButtonText: "Boring, next!"
 				})
 				break
 			case 'Z':
@@ -193,11 +217,11 @@ async function main() {
 					title: 'Z-DNA',
 					html: `
 			          Segments of DNA that cells have methylated for regulatory purposes may adopt the Z geometry, in which the strands turn about the helical axis the opposite way to A-DNA and B-DNA. There is also evidence of protein-DNA complexes forming Z-DNA structures. 
-			          <br><a href="https://link.springer.com/article/10.1007/s12551-019-00534-1">More Info</a> <br>
-			  <a href="https://www.rcsb.org/structure/4ocb">Crystallogrpahic Data Source</a>
+			          <br><a href="https://link.springer.com/article/10.1007/s12551-019-00534-1" target="_blank">More Info</a> <br>
+			  <a href="https://www.rcsb.org/structure/4ocb" target="_blank">Crystallogrpahic Data Source</a>
 			`,
 					icon: 'info',
-					confirmButtonText: 'Cool'
+					confirmButtonText: 'Zany!'
 				})
 				break
 			case 'G':
@@ -206,11 +230,11 @@ async function main() {
 					title: 'G-quadruplex',
 					html: `
 			          G-quadruplex structures are helical in shape and can form one, two, or four strands. The shown G-quadruplex structure was formed by Bromo-substituted Human Telomeric DNA, and imaged via X-Ray Diffraction, like the others.   
-			          <br><a href="https://academic.oup.com/nar/article/48/1/1/5637585">More Info</a> <br>
-			  <a href="https://www.rcsb.org/structure/6jkn">Crystallogrpahic Data Source</a>
+			          <br><a href="https://academic.oup.com/nar/article/48/1/1/5637585" target="_blank">More Info</a> <br>
+			  <a href="https://www.rcsb.org/structure/6jkn" target="_blank">Crystallogrpahic Data Source</a>
 			`,
 					icon: 'info',
-					confirmButtonText: 'Cool'
+					confirmButtonText: "Oh wow you're still here?"
 				})
 				break
 			case 'C':
@@ -219,11 +243,11 @@ async function main() {
 					title: 'C-DNA',
 					html: `
 			          C-DNA (not to be confused with cDNA, complementary DNA) is, as far as we know, a purely synthetic DNA conformation. Low humidity and Lithium and Magnesium ions can induce this state, but we have not seen it occur naturally in vivo before. It is also relatively unstable.
-			          <br><a href="https://bio.libretexts.org/Bookshelves/Genetics/Working_with_Molecular_Genetics_(Hardison)/Unit_I%3A_Genes_Nucleic_Acids_Genomes_and_Chromosomes/2%3A_Structures_of_Nucleic_Acids/2.5%3A_B-Form_A-Form_and_Z-Form_of_DNA">More Info</a> <br>
-			  <a href="https://www.rcsb.org/structure/199D">Crystallogrpahic Data Source</a>
+			          <br><a href="https://bio.libretexts.org/Bookshelves/Genetics/Working_with_Molecular_Genetics_(Hardison)/Unit_I%3A_Genes_Nucleic_Acids_Genomes_and_Chromosomes/2%3A_Structures_of_Nucleic_Acids/2.5%3A_B-Form_A-Form_and_Z-Form_of_DNA" target="_blank">More Info</a> <br>
+			  <a href="https://www.rcsb.org/structure/199D" target="_blank">Crystallogrpahic Data Source</a>
 			`,
 					icon: 'info',
-					confirmButtonText: 'Cool'
+					confirmButtonText: 'Cool!'
 				})
 				break
 			case 'E':
@@ -231,12 +255,12 @@ async function main() {
 				Swal.fire({
 					title: 'E-DNA',
 					html: `
-			          E-DNA has not been found naturally; is an induced state via cytosine methylation or bromation. It is speculated to be an intermediate state between B-DNA and A-DNA. While it hasn't beeen studied as thoroughly as the other conformations, here has been extended interest by scientists to use E-DNA as a <a href="https://pubs.acs.org/doi/full/10.1021/ac500251t">biosensor to detect microRNAs (Lin et al 2014)</a>.    
-			          <br><a href="https://www.nature.com/articles/nsb0900_758">More Info</a> <br>
-			  <a href="https://www.rcsb.org/structure/1F6I">Crystallogrpahic Data Source</a>
+			          E-DNA has not been found naturally; is an induced state via cytosine methylation or bromation. It is speculated to be an intermediate state between B-DNA and A-DNA. While it hasn't beeen studied as thoroughly as the other conformations, here has been extended interest by scientists to use E-DNA as a <a href="https://pubs.acs.org/doi/full/10.1021/ac500251t" target="_blank">biosensor to detect microRNAs (Lin et al 2014)</a>.    
+			          <br><a href="https://www.nature.com/articles/nsb0900_758" target="_blank">More Info</a> <br>
+			  <a href="https://www.rcsb.org/structure/1F6I" target="_blank">Crystallogrpahic Data Source</a>
 			`,
 					icon: 'info',
-					confirmButtonText: 'Cool'
+					confirmButtonText: 'What next?'
 				})
 				break
 			case 'H':
@@ -245,8 +269,8 @@ async function main() {
 					title: 'H-DNA',
 					html: `
 			          H-DNA, also known as Triple-stranded DNA or Triplex-DNA, is essentially a conventional B-DNA molecule with an extra strand, forming a triple helix.    
-			          <br><a href="https://pubs.rsc.org/en/content/articlehtml/2022/sc/d2sc01793h">More Info</a> <br>
-			  <a href="https://www.rcsb.org/structure/1W86">Crystallogrpahic Data Source</a>
+			          <br><a href="https://pubs.rsc.org/en/content/articlehtml/2022/sc/d2sc01793h" target="_blank">More Info</a> <br>
+			  <a href="https://www.rcsb.org/structure/1W86" target="_blank">Crystallogrpahic Data Source</a>
 			`,
 					icon: 'info',
 					confirmButtonText: 'ur the 🧬🧬🧬 master wow'
@@ -258,8 +282,8 @@ async function main() {
 					title: 'i-motif',
 					html: `i-motif (intercalated-motif) DNA are similar to G-quadruplex discussed prior, the chief differentiation being that i-motif DNA are formed in cytosine-rich regions and G-quadruplex structures are formed in guanine-rich regions of DNA. This four-stranded structure was originally discovered <a href="https://www.nature.com/articles/363561a0">in vitro (Gehring et al 1993)</a> but a <a href="https://www.nature.com/articles/s41557-018-0046-3">2018 discovery (Zeraati et al)</a> found them in human nuclei.
                       
-                  <br><a href="https://academic.oup.com/nar/article/46/16/8038/5075032">More Info</a> <br>
-          <a href="https://www.rcsb.org/structure/8cxf">Crystallogrpahic Data Source</a>
+                  <br><a href="https://academic.oup.com/nar/article/46/16/8038/5075032" target="_blank">More Info</a> <br>
+          <a href="https://www.rcsb.org/structure/8cxf" target="_blank">Crystallogrpahic Data Source</a>
         `,
 					icon: 'info',
 					confirmButtonText: '🫡'
