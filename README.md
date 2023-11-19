@@ -1,3 +1,8 @@
+# overview
+
+uses threejs, sweetalert, vite->netlify
+
+
 # building / testing
 for testing, `npx vite --host` (host part so it's exposed so others on my net)
 `npx vite build` outputs to dist/ for actual deployment

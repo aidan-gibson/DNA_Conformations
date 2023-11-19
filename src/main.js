@@ -22,6 +22,20 @@ let H_DNA_Data = null
 let I_DNA_Data = null
 
 
+// works for EVERY click, but i just want buttons
+// document.addEventListener('click', function() {
+// 	var audio = new Audio('click.mp3')
+// 	audio.play()
+// })
+
+// JUST buttons (not counting sweetalert buttons)
+document.querySelectorAll('button').forEach(button => {
+	button.addEventListener('click', function() {
+		var audio = new Audio('click.mp3')
+		audio.play()
+	})
+})
+
 
 
 function initializeWorld(container) {
