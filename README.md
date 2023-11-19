@@ -1,6 +1,6 @@
 # overview
 
-uses threejs, sweetalert, vite->netlify
+uses threejs, sweetalert, vite->netlify->helix.surf
 
 
 # building / testing
