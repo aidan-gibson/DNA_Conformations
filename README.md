@@ -15,6 +15,8 @@ for testing, `npx vite --host` (host part so it's exposed so others on my net)
 
 loading assets bar/circle thingy (music AND 3d objs)
 
+actually test VR
+
 hovering over link gives iframe 
 
 
