@@ -255,7 +255,7 @@ async function main() {
 				Swal.fire({
 					title: 'E-DNA',
 					html: `
-			          E-DNA has not been found naturally; is an induced state via cytosine methylation or bromation. It is speculated to be an intermediate state between B-DNA and A-DNA. While it hasn't beeen studied as thoroughly as the other conformations, here has been extended interest by scientists to use E-DNA as a <a href="https://pubs.acs.org/doi/full/10.1021/ac500251t" target="_blank">biosensor to detect microRNAs (Lin et al 2014)</a>.    
+			          E-DNA has not been found naturally; is an induced state via cytosine methylation or bromation. It is speculated to be an intermediate state between B-DNA and A-DNA. While it hasn't beeen studied as thoroughly as the other conformations, there has been extended interest by scientists to use E-DNA as a <a href="https://pubs.acs.org/doi/full/10.1021/ac500251t" target="_blank">biosensor to detect microRNAs (Lin et al 2014)</a>.    
 			          <br><br><a href="https://www.nature.com/articles/nsb0900_758" target="_blank">More Info</a> <br>
 			  <a href="https://www.rcsb.org/structure/1F6I" target="_blank">Crystallogrpahic Data Source</a>
 			`,
