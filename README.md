@@ -33,12 +33,7 @@ hovering over link gives iframe
 * About link
 * optimize vite?
 
-DNA select kinda whack
-pretty background
-clicky satisfying sound effects
-music
-optim favicons
-link to repo (gh icon in upper right corner or smth)
+DNA select could b prettier
 
 
 assets loading bar
