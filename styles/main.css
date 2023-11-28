@@ -1,15 +1,20 @@
+
+
 body {
   /* remove margins and scroll bars */
   margin: 0;
   overflow: hidden;
-
-  /* style text */
   text-align: center;
+  /* style text */
+  
   font-size: 12px;
   font-family: Sans-Serif;
 
   /* color text */
   color: #444;
+}
+#centerboys{
+  text-align: center;
 }
 
 h1 {
@@ -61,6 +66,7 @@ button {
   width: auto; /* You can set a specific width or use 'auto' */
   height: auto; /* You can set a specific height or use 'auto' */
 }
+
 #dna-info {
   font-size: 1.2rem; /* Responsive font size */
   /* Additional responsive styling */
@@ -74,6 +80,8 @@ h2.swal2-title{
   font-size: 2.4em
   /*padding-left:4px;*/
 }
+
+
 
 @keyframes textShadow {
   0% {text-shadow: 0.4389924193300864px 0 1px rgba(0,30,255,0.5), -0.4389924193300864px 0 1px rgba(255,0,80,0.3), 0 0 3px;}

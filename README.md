@@ -14,7 +14,7 @@ for testing, `npx vite --host` (host part so it's exposed so others on my net)
 # todo
 
 loading assets bar/circle thingy (music AND 3d objs)
-
+would be cool if favicon animated (swapping strand colors)
 actually test VR
 
 hovering over link gives iframe 

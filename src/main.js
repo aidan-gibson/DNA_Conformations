@@ -65,8 +65,6 @@ document.querySelectorAll('button').forEach(button => {
 
 
 function initializeWorld(container) {
-
-	// camera = createCamera()
 	const camera = new PerspectiveCamera(65, window.innerWidth / window.innerHeight, 0.1, 1000)
 	camera.position.set(0, 20, 45)
 	camera.zoom = 1
